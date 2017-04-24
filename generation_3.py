@@ -26,7 +26,7 @@ def create_discriptions(filenames):
             line = line.rstrip()
             if line:
             	fields = line.split(":")
-            	description = Description(fields[GENDER], fields[PRODUCT], [CLASP_TYPE], fields[POCKET_TYPE], 
+            	description = Description(fields[GENDER], fields[PRODUCT], fields[CLASP_TYPE], fields[POCKET_TYPE], 
             		fields[SEAM_LENGHT], fields[CUTTING], fields[DESIGN_EFFECTS], fields[SEASON], fields[ID])
 
             descriptions[(description.id)] = description
@@ -40,7 +40,7 @@ def save_discriptions(descriptions):
         descript = descriptions[key]
 
         with open('data/descriptions_out.txt', 'a') as file:
-        	print(descript.gender[:5] + "ие", descript.product, "на", descript[CLASP_TYPE][:7] + "ах", "декорированные", 
+        	print(descript.gender[:5] + "ие", descript.product, "на", descript.clas_type[:7] + "ах", "декорированные", 
         	      descript.pocket_type[:6] + "ми", "карманами. Длинные брючины", descript.seam_lenght, 
     	          "Крой типа", descript.cutting, "позволяет подчеркнуть вашу фигуру, а эффект", 
     	          descript.design_effects, "создает небрежный образ. Подходит на", descript.season, "сезон.", file=file)
