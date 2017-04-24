@@ -5,7 +5,7 @@ import sys
 ID, GENDER, PRODUCT, CLASP_TYPE, POCKET_TYPE, SEAM_LENGHT, CUTTING, DESIGN_EFFECTS, SEASON = range(9)
 
 Description = collections.namedtuple("Description",
-            "gender product clasp_type pocket_type seam_lenght cutting design_effects season id")
+            ['gender', 'product', 'clas_type', 'pocket_type', 'seam_lenght', 'cutting', 'design_effects', 'season', 'id'])
 
 
 def main():
@@ -16,6 +16,7 @@ def main():
     filenames = sys.argv[1:]
     descriptions = create_discriptions(filenames)
     save_discriptions(descriptions)
+    print(descriptions)
     
 
 def create_discriptions(filenames):
@@ -39,10 +40,10 @@ def save_discriptions(descriptions):
         descript = descriptions[key]
 
         with open('data/descriptions_out.txt', 'a') as file:
-        	print(descript[GENDER][:5] + "ие", descript[PRODUCT], "на", descript[CLASP_TYPE][:7] + "ах", "декорированные", 
-        	      descript[POCKET_TYPE][:6] + "ми", "карманами. Длинные брючины", descript[SEAM_LENGHT], 
-    	          "Крой типа", descript[CUTTING], "позволяет подчеркнуть вашу фигуру, а эффект", 
-    	          descript[DESIGN_EFFECTS], "создает небрежный образ. Подходит на", descript[2], "сезон.", file=file)
+        	print(descript.gender[:5] + "ие", descript.product, "на", descript[CLASP_TYPE][:7] + "ах", "декорированные", 
+        	      descript.pocket_type[:6] + "ми", "карманами. Длинные брючины", descript.seam_lenght, 
+    	          "Крой типа", descript.cutting, "позволяет подчеркнуть вашу фигуру, а эффект", 
+    	          descript.design_effects, "создает небрежный образ. Подходит на", descript.season, "сезон.", file=file)
 
         
 
