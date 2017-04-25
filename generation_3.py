@@ -25,27 +25,29 @@ def create_discriptions(filenames):
         for line in open(filename, encoding="utf8"):
             line = line.rstrip()
             if line:
-            	fields = line.split(":")
-            	description = Description(fields[GENDER], fields[PRODUCT], fields[CLASP_TYPE], fields[POCKET_TYPE], 
-            		fields[SEAM_LENGHT], fields[CUTTING], fields[DESIGN_EFFECTS], fields[SEASON], fields[ID])
+                fields = line.split(":")
+                description = Description(fields[GENDER], fields[PRODUCT], fields[CLASP_TYPE],
+                                          fields[POCKET_TYPE], fields[SEAM_LENGHT], fields[CUTTING],
+                                          fields[DESIGN_EFFECTS], fields[SEASON], fields[ID])
 
             descriptions[(description.id)] = description
     return descriptions
-    
+
 
 def save_discriptions(descriptions):
 
 
     for key in sorted(descriptions):
-        descript = descriptions[key]
-
-        with open('data/descriptions_out.txt', 'a') as file:
-        	print(descript.gender[:5] + "ие", descript.product, "на", descript.clas_type[:7] + "ах", "декорированные", 
-        	      descript.pocket_type[:6] + "ми", "карманами. Длинные брючины", descript.seam_lenght, 
-    	          "Крой типа", descript.cutting, "позволяет подчеркнуть вашу фигуру, а эффект", 
-    	          descript.design_effects, "создает небрежный образ. Подходит на", descript.season, "сезон.", file=file)
-
         
+        descript = descriptions[key]
+        with open('data/descriptions_out.txt', 'a') as file:
+            
+            print("{0:.5}ие {1} на {2:.7}ах декорированные {3:.6}ми карманами." 
+                  "Длинные брючины {4}. Крой типа {5} позволяет подчеркнуть вашу фигуру,"
+                  "а эффект {6} создает небрежный образ."
+                  "Подходит на {7} сезон.:{8}".format(descript.gender, descript.product, descript.clas_type,
+                                                      descript.pocket_type, descript.seam_lenght, descript.cutting,
+                                                      descript.design_effects, descript.season, descript.id), file=file)
 
 
 main()

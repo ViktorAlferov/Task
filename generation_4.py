@@ -36,6 +36,11 @@ def process_line(line, descriptionnames):
 
 
 def print_description(descriptions):
+    namewidth = 32
+    idwidth = 9
+
+    print("{0:<{nw}} {2:{uw}}".format(
+          "Descriptions", "ID", nw=namewidth, uw=idwidth))
 
 
     for key in sorted(descriptions):
@@ -45,6 +50,7 @@ def print_description(descriptions):
               "Крой типа", CUTTING, "позволяет подчеркнуть вашу фигуру, а эффект", DESIGN_EFFECTS, 
               "создает небрежный образ. Подходит на", SEASON, "сезон.")
 
+    
 
 
 main()
