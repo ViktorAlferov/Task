@@ -7,4 +7,8 @@ class Weather():
 
     def weather_now(self):
         """Погода сейчас."""
-        print(self.name + " говорит, что сейчас в Томске: ", self.temp_c, "°C")
+        try:
+            print(self.name + " говорит, что сейчас в Томске: ", self.temp_c, "°C")
+            
+        except AttributeError:
+            print('NoneType object has no attribute decode')
