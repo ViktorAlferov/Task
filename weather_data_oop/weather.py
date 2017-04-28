@@ -1,4 +1,5 @@
 # module with weathers
+import requests
 class Weather():
     def __init__(self, name, temp_c):
         """Инициализирует атрибуты temp_c и name."""
@@ -7,8 +8,11 @@ class Weather():
 
     def weather_now(self):
         """Погода сейчас."""
-        try:
-            print(self.name + " говорит, что сейчас в Томске: ", self.temp_c, "°C")
-            
-        except AttributeError:
-            print('NoneType object has no attribute decode')
+        print(self.name + " говорит, что сейчас в Томске: ", self.temp_c, "°C")
+
+
+
+
+
+
+
