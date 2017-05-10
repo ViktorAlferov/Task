@@ -1,16 +1,14 @@
 # module with weathers
-import requests
+from urllib.parse import urlparse
+
 class Weather():
-    def __init__(self, name, temp_c):
-        """Инициализирует атрибуты temp_c и name."""
-        self.temp_c = temp_c
-        self.name = name
+    def __init__(self, url=None):
+        self.url = url
 
-    def weather_now(self):
-        """Погода сейчас."""
-        print(self.name + " говорит, что сейчас в Томске: ", self.temp_c, "°C")
-
-
+    @property
+    def domain(self):
+        domain = urlparse(self.url)
+        return domain.netloc
 
 
 
